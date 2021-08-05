@@ -69,19 +69,19 @@ async function getHongkong(){
         let secondPrize = $("body > table > tbody > tr > td > center > table > tbody > tr:nth-child(3) > td:nth-child(2)").text().replace(/\n/g,'');
         let thirdPrize = $("body > table > tbody > tr > td > center > table > tbody > tr:nth-child(4) > td:nth-child(2)").text().replace(/\n/g,'');
 
-        let starter1 = $("body > table > tbody > tr > td > center > table > tbody > tr:nth-child(5) > td:nth-child(2) > table > tbody > tr:nth-child(1) > td:nth-child(1)").text().replace(/\n/g,'');
-        let starter2 = $("body > table > tbody > tr > td > center > table > tbody > tr:nth-child(5) > td:nth-child(2) > table > tbody > tr:nth-child(1) > td:nth-child(2)").text().replace(/\n/g,'');
-        let starter3 = $("body > table > tbody > tr > td > center > table > tbody > tr:nth-child(5) > td:nth-child(2) > table > tbody > tr:nth-child(2) > td:nth-child(1)").text().replace(/\n/g,'');
-        let starter4 = $("body > table > tbody > tr > td > center > table > tbody > tr:nth-child(5) > td:nth-child(2) > table > tbody > tr:nth-child(2) > td:nth-child(2)").text().replace(/\n/g,'');
+        let starter1 = $("body > table > tbody > tr > td > center > table > tbody > tr:nth-child(5) > td:nth-child(2) > table > tbody > tr:nth-child(1) > td:nth-child(1)").text().replace(/\n/g,'').replace(" ",'');
+        let starter2 = $("body > table > tbody > tr > td > center > table > tbody > tr:nth-child(5) > td:nth-child(2) > table > tbody > tr:nth-child(1) > td:nth-child(2)").text().replace(/\n/g,'').replace(" ",'');
+        let starter3 = $("body > table > tbody > tr > td > center > table > tbody > tr:nth-child(5) > td:nth-child(2) > table > tbody > tr:nth-child(2) > td:nth-child(1)").text().replace(/\n/g,'').replace(" ",'');
+        let starter4 = $("body > table > tbody > tr > td > center > table > tbody > tr:nth-child(5) > td:nth-child(2) > table > tbody > tr:nth-child(2) > td:nth-child(2)").text().replace(/\n/g,'').replace(" ",'');
 
-        let consolation1 = $("body > table > tbody > tr > td > center > table > tbody > tr:nth-child(6) > td:nth-child(2) > table > tbody > tr:nth-child(1) > td:nth-child(1)").text().replace(/\n/g,'');
-        let consolation2 = $("body > table > tbody > tr > td > center > table > tbody > tr:nth-child(6) > td:nth-child(2) > table > tbody > tr:nth-child(1) > td:nth-child(2)").text().replace(/\n/g,'');
-        let consolation3 = $("body > table > tbody > tr > td > center > table > tbody > tr:nth-child(6) > td:nth-child(2) > table > tbody > tr:nth-child(2) > td:nth-child(1)").text().replace(/\n/g,'');
-        let consolation4 = $("body > table > tbody > tr > td > center > table > tbody > tr:nth-child(6) > td:nth-child(2) > table > tbody > tr:nth-child(2) > td:nth-child(2)").text().replace(/\n/g,'');
-        let consolation5 = $("body > table > tbody > tr > td > center > table > tbody > tr:nth-child(6) > td:nth-child(2) > table > tbody > tr:nth-child(3) > td:nth-child(1)").text().replace(/\n/g,'');
-        let consolation6 = $("body > table > tbody > tr > td > center > table > tbody > tr:nth-child(6) > td:nth-child(2) > table > tbody > tr:nth-child(3) > td:nth-child(2)").text().replace(/\n/g,'');
+        let consolation1 = $("body > table > tbody > tr > td > center > table > tbody > tr:nth-child(6) > td:nth-child(2) > table > tbody > tr:nth-child(1) > td:nth-child(1)").text().replace(/\n/g,'').replace(" ",'');
+        let consolation2 = $("body > table > tbody > tr > td > center > table > tbody > tr:nth-child(6) > td:nth-child(2) > table > tbody > tr:nth-child(1) > td:nth-child(2)").text().replace(/\n/g,'').replace(" ",'');
+        let consolation3 = $("body > table > tbody > tr > td > center > table > tbody > tr:nth-child(6) > td:nth-child(2) > table > tbody > tr:nth-child(2) > td:nth-child(1)").text().replace(/\n/g,'').replace(" ",'');
+        let consolation4 = $("body > table > tbody > tr > td > center > table > tbody > tr:nth-child(6) > td:nth-child(2) > table > tbody > tr:nth-child(2) > td:nth-child(2)").text().replace(/\n/g,'').replace(" ",'');
+        let consolation5 = $("body > table > tbody > tr > td > center > table > tbody > tr:nth-child(6) > td:nth-child(2) > table > tbody > tr:nth-child(3) > td:nth-child(1)").text().replace(/\n/g,'').replace(" ",'');
+        let consolation6 = $("body > table > tbody > tr > td > center > table > tbody > tr:nth-child(6) > td:nth-child(2) > table > tbody > tr:nth-child(3) > td:nth-child(2)").text().replace(/\n/g,'').replace(" ",'')
         let consolation7 = $("body > table > tbody > tr > td > center > table > tbody > tr:nth-child(6) > td:nth-child(2) > table > tbody > tr:nth-child(4) > td:nth-child(1)").text().replace(/\n/g,'').replace(" ",'');
-        let consolation8 = $("body > table > tbody > tr > td > center > table > tbody > tr:nth-child(6) > td:nth-child(2) > table > tbody > tr:nth-child(4) > td:nth-child(2)").text().replace(/\n/g,'');
+        let consolation8 = $("body > table > tbody > tr > td > center > table > tbody > tr:nth-child(6) > td:nth-child(2) > table > tbody > tr:nth-child(4) > td:nth-child(2)").text().replace(/\n/g,'').replace(" ",'');
 
         
         // console.log("aa", nextDraw)
