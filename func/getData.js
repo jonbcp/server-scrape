@@ -41,6 +41,15 @@ function diff_minutes(dt2, dt1) {
 
 
 async function HongkongUpdate(){
+    let file = read("hongkong")
+    console.log("updating hongkong ...")
+
+    let getNewFile = await reqData.getHongkong();
+    file = getNewFile;
+    write('hongkong', file)
+}
+
+async function aHongkongUpdate(){
     // check current file
     let file = read("hongkong")
     // console.log("updating hongkong", file, checkFile(file))
@@ -57,6 +66,7 @@ async function HongkongUpdate(){
     let currUnix = Date.parse(currentTime)
     let nextDrawUnix = Date.parse(file.nextDraw)
     let diffTime = diff_minutes(nextDrawUnix, currUnix)
+    console.log(diffTime)
     // jika kurang dua minute start draw
     if (!file.startDraw && diffTime < 2) {
         file.startDraw = true;
