@@ -49,6 +49,15 @@ async function HongkongUpdate(){
     write('hongkong', file)
 }
 
+async function SydneyUpdate(){
+    let file = read("sydney")
+    console.log("updating sydney ...")
+
+    let getNewFile = await reqData.getSydney();
+    file = getNewFile;
+    write('sydney', file)
+}
+
 async function aHongkongUpdate(){
     // check current file
     let file = read("hongkong")
@@ -89,5 +98,8 @@ function getHongkong(){
     return read("hongkong")
 }
 
+function getSydney(){
+    return read("sydney")
+}
 
-module.exports = {getHongkong, HongkongUpdate}
+module.exports = {getHongkong, HongkongUpdate, SydneyUpdate, getSydney}
