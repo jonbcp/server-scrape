@@ -127,51 +127,85 @@ async function getSydney(){
 
         let currentDraw = $('div[style*="width: 422px; height: 606px; position: relative; overflow-y: auto; margin-top: 8px;"] > table > tbody > tr:nth-child(2) > td > b > font').text().trim();
         let firstPrize = []
-        firstPrize[0] = $('div[style*="width: 422px; height: 606px; position: relative; overflow-y: auto; margin-top: 8px;"] > table > tbody > tr:nth-child(3) > td > table > tbody > tr:nth-child(1) > td:nth-child(2) > img:nth-child(1)').attr('src').replace("sydney/images/bola2/biru_", "").replace(".jpg","")
-        firstPrize[1] = $('div[style*="width: 422px; height: 606px; position: relative; overflow-y: auto; margin-top: 8px;"] > table > tbody > tr:nth-child(3) > td > table > tbody > tr:nth-child(1) > td:nth-child(2) > img:nth-child(2)').attr('src').replace("sydney/images/bola2/biru_", "").replace(".jpg","")
-        firstPrize[2] = $('div[style*="width: 422px; height: 606px; position: relative; overflow-y: auto; margin-top: 8px;"] > table > tbody > tr:nth-child(3) > td > table > tbody > tr:nth-child(1) > td:nth-child(2) > img:nth-child(3)').attr('src').replace("sydney/images/bola2/biru_", "").replace(".jpg","")
-        firstPrize[3] = $('div[style*="width: 422px; height: 606px; position: relative; overflow-y: auto; margin-top: 8px;"] > table > tbody > tr:nth-child(3) > td > table > tbody > tr:nth-child(1) > td:nth-child(2) > img:nth-child(4)').attr('src').replace("sydney/images/bola2/biru_", "").replace(".jpg","")
-        firstPrize[4] = $('div[style*="width: 422px; height: 606px; position: relative; overflow-y: auto; margin-top: 8px;"] > table > tbody > tr:nth-child(3) > td > table > tbody > tr:nth-child(1) > td:nth-child(2) > img:nth-child(5)').attr('src').replace("sydney/images/bola2/biru_", "").replace(".jpg","")
-        firstPrize[5] = $('div[style*="width: 422px; height: 606px; position: relative; overflow-y: auto; margin-top: 8px;"] > table > tbody > tr:nth-child(3) > td > table > tbody > tr:nth-child(1) > td:nth-child(2) > img:nth-child(6)').attr('src').replace("sydney/images/bola2/biru_", "").replace(".jpg","")
-        // console.log("firstPrize ", firstPrize.join(''))
+        firstPrize[0] = $('div[style*="width: 422px; height: 606px; position: relative; overflow-y: auto; margin-top: 8px;"] > table > tbody > tr:nth-child(3) > td > table > tbody > tr:nth-child(1) > td:nth-child(2) > img:nth-child(1)').attr('src') || '';
+        firstPrize[1] = $('div[style*="width: 422px; height: 606px; position: relative; overflow-y: auto; margin-top: 8px;"] > table > tbody > tr:nth-child(3) > td > table > tbody > tr:nth-child(1) > td:nth-child(2) > img:nth-child(2)').attr('src') || '';
+        firstPrize[2] = $('div[style*="width: 422px; height: 606px; position: relative; overflow-y: auto; margin-top: 8px;"] > table > tbody > tr:nth-child(3) > td > table > tbody > tr:nth-child(1) > td:nth-child(2) > img:nth-child(3)').attr('src') || '';
+        firstPrize[3] = $('div[style*="width: 422px; height: 606px; position: relative; overflow-y: auto; margin-top: 8px;"] > table > tbody > tr:nth-child(3) > td > table > tbody > tr:nth-child(1) > td:nth-child(2) > img:nth-child(4)').attr('src') || '';
+        firstPrize[4] = $('div[style*="width: 422px; height: 606px; position: relative; overflow-y: auto; margin-top: 8px;"] > table > tbody > tr:nth-child(3) > td > table > tbody > tr:nth-child(1) > td:nth-child(2) > img:nth-child(5)').attr('src') || '';
+        firstPrize[5] = $('div[style*="width: 422px; height: 606px; position: relative; overflow-y: auto; margin-top: 8px;"] > table > tbody > tr:nth-child(3) > td > table > tbody > tr:nth-child(1) > td:nth-child(2) > img:nth-child(6)').attr('src') || '';
+
+        firstPrize = firstPrize.map( el => {
+            if(el){
+               return el.replace("sydney/images/bola2/biru_", "").replace(".jpg","")
+            } else {
+                return '';
+            }
+        })
+        // console.log("firstprize", firstPrize)
 
         let secondPrize = []
-        secondPrize[0] = $('div[style*="width: 422px; height: 606px; position: relative; overflow-y: auto; margin-top: 8px;"] > table > tbody > tr:nth-child(3) > td > table > tbody > tr:nth-child(3) > td:nth-child(2) > img:nth-child(1)').attr('src').replace("sydney/images/bola2/hijau_", "").replace(".jpg","")
-        secondPrize[1] = $('div[style*="width: 422px; height: 606px; position: relative; overflow-y: auto; margin-top: 8px;"] > table > tbody > tr:nth-child(3) > td > table > tbody > tr:nth-child(3) > td:nth-child(2) > img:nth-child(2)').attr('src').replace("sydney/images/bola2/hijau_", "").replace(".jpg","")
-        secondPrize[2] = $('div[style*="width: 422px; height: 606px; position: relative; overflow-y: auto; margin-top: 8px;"] > table > tbody > tr:nth-child(3) > td > table > tbody > tr:nth-child(3) > td:nth-child(2) > img:nth-child(3)').attr('src').replace("sydney/images/bola2/hijau_", "").replace(".jpg","")
-        secondPrize[3] = $('div[style*="width: 422px; height: 606px; position: relative; overflow-y: auto; margin-top: 8px;"] > table > tbody > tr:nth-child(3) > td > table > tbody > tr:nth-child(3) > td:nth-child(2) > img:nth-child(4)').attr('src').replace("sydney/images/bola2/hijau_", "").replace(".jpg","")
-        secondPrize[4] = $('div[style*="width: 422px; height: 606px; position: relative; overflow-y: auto; margin-top: 8px;"] > table > tbody > tr:nth-child(3) > td > table > tbody > tr:nth-child(3) > td:nth-child(2) > img:nth-child(5)').attr('src').replace("sydney/images/bola2/hijau_", "").replace(".jpg","")
-        secondPrize[5] = $('div[style*="width: 422px; height: 606px; position: relative; overflow-y: auto; margin-top: 8px;"] > table > tbody > tr:nth-child(3) > td > table > tbody > tr:nth-child(3) > td:nth-child(2) > img:nth-child(6)').attr('src').replace("sydney/images/bola2/hijau_", "").replace(".jpg","")
-        // console.log("secondPrize ", secondPrize.join(''))
-
+        secondPrize[0] = $('div[style*="width: 422px; height: 606px; position: relative; overflow-y: auto; margin-top: 8px;"] > table > tbody > tr:nth-child(3) > td > table > tbody > tr:nth-child(3) > td:nth-child(2) > img:nth-child(1)').attr('src') || '';
+        secondPrize[1] = $('div[style*="width: 422px; height: 606px; position: relative; overflow-y: auto; margin-top: 8px;"] > table > tbody > tr:nth-child(3) > td > table > tbody > tr:nth-child(3) > td:nth-child(2) > img:nth-child(2)').attr('src') || '';
+        secondPrize[2] = $('div[style*="width: 422px; height: 606px; position: relative; overflow-y: auto; margin-top: 8px;"] > table > tbody > tr:nth-child(3) > td > table > tbody > tr:nth-child(3) > td:nth-child(2) > img:nth-child(3)').attr('src') || '';
+        secondPrize[3] = $('div[style*="width: 422px; height: 606px; position: relative; overflow-y: auto; margin-top: 8px;"] > table > tbody > tr:nth-child(3) > td > table > tbody > tr:nth-child(3) > td:nth-child(2) > img:nth-child(4)').attr('src') || '';
+        secondPrize[4] = $('div[style*="width: 422px; height: 606px; position: relative; overflow-y: auto; margin-top: 8px;"] > table > tbody > tr:nth-child(3) > td > table > tbody > tr:nth-child(3) > td:nth-child(2) > img:nth-child(5)').attr('src') || '';
+        secondPrize[5] = $('div[style*="width: 422px; height: 606px; position: relative; overflow-y: auto; margin-top: 8px;"] > table > tbody > tr:nth-child(3) > td > table > tbody > tr:nth-child(3) > td:nth-child(2) > img:nth-child(6)').attr('src') || '';
+        secondPrize = secondPrize.map( el => {
+            if(el){
+                return el.replace("sydney/images/bola2/hijau_", "").replace(".jpg","")
+             } else {
+                 return '';
+             }
+        })
+        // console.log(secondPrize)
+        
 
         let thirdPrize = []
-        thirdPrize[0] = $('div[style*="width: 422px; height: 606px; position: relative; overflow-y: auto; margin-top: 8px;"] > table > tbody > tr:nth-child(3) > td > table > tbody > tr:nth-child(5) > td:nth-child(2) > img:nth-child(1)').attr('src').replace("sydney/images/bola2/pink_", "").replace(".jpg","")
-        thirdPrize[1] = $('div[style*="width: 422px; height: 606px; position: relative; overflow-y: auto; margin-top: 8px;"] > table > tbody > tr:nth-child(3) > td > table > tbody > tr:nth-child(5) > td:nth-child(2) > img:nth-child(2)').attr('src').replace("sydney/images/bola2/pink_", "").replace(".jpg","")
-        thirdPrize[2] = $('div[style*="width: 422px; height: 606px; position: relative; overflow-y: auto; margin-top: 8px;"] > table > tbody > tr:nth-child(3) > td > table > tbody > tr:nth-child(5) > td:nth-child(2) > img:nth-child(3)').attr('src').replace("sydney/images/bola2/pink_", "").replace(".jpg","")
-        thirdPrize[3] = $('div[style*="width: 422px; height: 606px; position: relative; overflow-y: auto; margin-top: 8px;"] > table > tbody > tr:nth-child(3) > td > table > tbody > tr:nth-child(5) > td:nth-child(2) > img:nth-child(4)').attr('src').replace("sydney/images/bola2/pink_", "").replace(".jpg","")
-        thirdPrize[4] = $('div[style*="width: 422px; height: 606px; position: relative; overflow-y: auto; margin-top: 8px;"] > table > tbody > tr:nth-child(3) > td > table > tbody > tr:nth-child(5) > td:nth-child(2) > img:nth-child(5)').attr('src').replace("sydney/images/bola2/pink_", "").replace(".jpg","")
-        thirdPrize[5] = $('div[style*="width: 422px; height: 606px; position: relative; overflow-y: auto; margin-top: 8px;"] > table > tbody > tr:nth-child(3) > td > table > tbody > tr:nth-child(5) > td:nth-child(2) > img:nth-child(6)').attr('src').replace("sydney/images/bola2/pink_", "").replace(".jpg","")
-        // console.log("thirdPrize ", thirdPrize.join(''))
+        thirdPrize[0] = $('div[style*="width: 422px; height: 606px; position: relative; overflow-y: auto; margin-top: 8px;"] > table > tbody > tr:nth-child(3) > td > table > tbody > tr:nth-child(5) > td:nth-child(2) > img:nth-child(1)').attr('src') || '';
+        thirdPrize[1] = $('div[style*="width: 422px; height: 606px; position: relative; overflow-y: auto; margin-top: 8px;"] > table > tbody > tr:nth-child(3) > td > table > tbody > tr:nth-child(5) > td:nth-child(2) > img:nth-child(2)').attr('src') || '';
+        thirdPrize[2] = $('div[style*="width: 422px; height: 606px; position: relative; overflow-y: auto; margin-top: 8px;"] > table > tbody > tr:nth-child(3) > td > table > tbody > tr:nth-child(5) > td:nth-child(2) > img:nth-child(3)').attr('src') || '';
+        thirdPrize[3] = $('div[style*="width: 422px; height: 606px; position: relative; overflow-y: auto; margin-top: 8px;"] > table > tbody > tr:nth-child(3) > td > table > tbody > tr:nth-child(5) > td:nth-child(2) > img:nth-child(4)').attr('src') || '';
+        thirdPrize[4] = $('div[style*="width: 422px; height: 606px; position: relative; overflow-y: auto; margin-top: 8px;"] > table > tbody > tr:nth-child(3) > td > table > tbody > tr:nth-child(5) > td:nth-child(2) > img:nth-child(5)').attr('src') || '';
+        thirdPrize[5] = $('div[style*="width: 422px; height: 606px; position: relative; overflow-y: auto; margin-top: 8px;"] > table > tbody > tr:nth-child(3) > td > table > tbody > tr:nth-child(5) > td:nth-child(2) > img:nth-child(6)').attr('src') || '';
+        thirdPrize = thirdPrize.map( el => {
+            if(el){
+                return el.replace("sydney/images/bola2/pink_", "").replace(".jpg","")
+             } else {
+                 return '';
+             }
+        })
+        // console.log(thirdPrize)
+        
 
         let starterPrize = []
-        starterPrize[0] = $('div[style*="width: 422px; height: 606px; position: relative; overflow-y: auto; margin-top: 8px;"] > table > tbody > tr:nth-child(3) > td > table > tbody > tr:nth-child(7) > td:nth-child(2) > img:nth-child(1)').attr('src').replace("sydney/images/bola2/orange_", "").replace(".jpg","")
-        starterPrize[1] = $('div[style*="width: 422px; height: 606px; position: relative; overflow-y: auto; margin-top: 8px;"] > table > tbody > tr:nth-child(3) > td > table > tbody > tr:nth-child(7) > td:nth-child(2) > img:nth-child(2)').attr('src').replace("sydney/images/bola2/orange_", "").replace(".jpg","")
-        starterPrize[2] = $('div[style*="width: 422px; height: 606px; position: relative; overflow-y: auto; margin-top: 8px;"] > table > tbody > tr:nth-child(3) > td > table > tbody > tr:nth-child(7) > td:nth-child(2) > img:nth-child(3)').attr('src').replace("sydney/images/bola2/orange_", "").replace(".jpg","")
-        starterPrize[3] = $('div[style*="width: 422px; height: 606px; position: relative; overflow-y: auto; margin-top: 8px;"] > table > tbody > tr:nth-child(3) > td > table > tbody > tr:nth-child(7) > td:nth-child(2) > img:nth-child(4)').attr('src').replace("sydney/images/bola2/orange_", "").replace(".jpg","")
-        starterPrize[4] = $('div[style*="width: 422px; height: 606px; position: relative; overflow-y: auto; margin-top: 8px;"] > table > tbody > tr:nth-child(3) > td > table > tbody > tr:nth-child(7) > td:nth-child(2) > img:nth-child(5)').attr('src').replace("sydney/images/bola2/orange_", "").replace(".jpg","")
-        starterPrize[5] = $('div[style*="width: 422px; height: 606px; position: relative; overflow-y: auto; margin-top: 8px;"] > table > tbody > tr:nth-child(3) > td > table > tbody > tr:nth-child(7) > td:nth-child(2) > img:nth-child(6)').attr('src').replace("sydney/images/bola2/orange_", "").replace(".jpg","")
-        // console.log("starterPrize ", starterPrize.join(''))
-
+        starterPrize[0] = $('div[style*="width: 422px; height: 606px; position: relative; overflow-y: auto; margin-top: 8px;"] > table > tbody > tr:nth-child(3) > td > table > tbody > tr:nth-child(7) > td:nth-child(2) > img:nth-child(1)').attr('src') || '';
+        starterPrize[1] = $('div[style*="width: 422px; height: 606px; position: relative; overflow-y: auto; margin-top: 8px;"] > table > tbody > tr:nth-child(3) > td > table > tbody > tr:nth-child(7) > td:nth-child(2) > img:nth-child(2)').attr('src') || '';
+        starterPrize[2] = $('div[style*="width: 422px; height: 606px; position: relative; overflow-y: auto; margin-top: 8px;"] > table > tbody > tr:nth-child(3) > td > table > tbody > tr:nth-child(7) > td:nth-child(2) > img:nth-child(3)').attr('src') || '';
+        starterPrize[3] = $('div[style*="width: 422px; height: 606px; position: relative; overflow-y: auto; margin-top: 8px;"] > table > tbody > tr:nth-child(3) > td > table > tbody > tr:nth-child(7) > td:nth-child(2) > img:nth-child(4)').attr('src') || '';
+        starterPrize[4] = $('div[style*="width: 422px; height: 606px; position: relative; overflow-y: auto; margin-top: 8px;"] > table > tbody > tr:nth-child(3) > td > table > tbody > tr:nth-child(7) > td:nth-child(2) > img:nth-child(5)').attr('src') || '';
+        starterPrize[5] = $('div[style*="width: 422px; height: 606px; position: relative; overflow-y: auto; margin-top: 8px;"] > table > tbody > tr:nth-child(3) > td > table > tbody > tr:nth-child(7) > td:nth-child(2) > img:nth-child(6)').attr('src') || '';
+        starterPrize = starterPrize.map( el => {
+            if(el){
+                return el.replace("sydney/images/bola2/orange_", "").replace(".jpg","")
+             } else {
+                 return '';
+             }
+        })
 
         let consolationPrize = []
-        consolationPrize[0] = $('div[style*="width: 422px; height: 606px; position: relative; overflow-y: auto; margin-top: 8px;"] > table > tbody > tr:nth-child(3) > td > table > tbody > tr:nth-child(9) > td:nth-child(2) > img:nth-child(1)').attr('src').replace("sydney/images/bola2/kuning_", "").replace(".jpg","")
-        consolationPrize[1] = $('div[style*="width: 422px; height: 606px; position: relative; overflow-y: auto; margin-top: 8px;"] > table > tbody > tr:nth-child(3) > td > table > tbody > tr:nth-child(9) > td:nth-child(2) > img:nth-child(2)').attr('src').replace("sydney/images/bola2/kuning_", "").replace(".jpg","")
-        consolationPrize[2] = $('div[style*="width: 422px; height: 606px; position: relative; overflow-y: auto; margin-top: 8px;"] > table > tbody > tr:nth-child(3) > td > table > tbody > tr:nth-child(9) > td:nth-child(2) > img:nth-child(3)').attr('src').replace("sydney/images/bola2/kuning_", "").replace(".jpg","")
-        consolationPrize[3] = $('div[style*="width: 422px; height: 606px; position: relative; overflow-y: auto; margin-top: 8px;"] > table > tbody > tr:nth-child(3) > td > table > tbody > tr:nth-child(9) > td:nth-child(2) > img:nth-child(4)').attr('src').replace("sydney/images/bola2/kuning_", "").replace(".jpg","")
-        consolationPrize[4] = $('div[style*="width: 422px; height: 606px; position: relative; overflow-y: auto; margin-top: 8px;"] > table > tbody > tr:nth-child(3) > td > table > tbody > tr:nth-child(9) > td:nth-child(2) > img:nth-child(5)').attr('src').replace("sydney/images/bola2/kuning_", "").replace(".jpg","")
-        consolationPrize[5] = $('div[style*="width: 422px; height: 606px; position: relative; overflow-y: auto; margin-top: 8px;"] > table > tbody > tr:nth-child(3) > td > table > tbody > tr:nth-child(9) > td:nth-child(2) > img:nth-child(6)').attr('src').replace("sydney/images/bola2/kuning_", "").replace(".jpg","")
-        // console.log("consolationPrize ", consolationPrize.join(''))
+        consolationPrize[0] = $('div[style*="width: 422px; height: 606px; position: relative; overflow-y: auto; margin-top: 8px;"] > table > tbody > tr:nth-child(3) > td > table > tbody > tr:nth-child(9) > td:nth-child(2) > img:nth-child(1)').attr('src') || '';
+        consolationPrize[1] = $('div[style*="width: 422px; height: 606px; position: relative; overflow-y: auto; margin-top: 8px;"] > table > tbody > tr:nth-child(3) > td > table > tbody > tr:nth-child(9) > td:nth-child(2) > img:nth-child(2)').attr('src') || '';
+        consolationPrize[2] = $('div[style*="width: 422px; height: 606px; position: relative; overflow-y: auto; margin-top: 8px;"] > table > tbody > tr:nth-child(3) > td > table > tbody > tr:nth-child(9) > td:nth-child(2) > img:nth-child(3)').attr('src') || '';
+        consolationPrize[3] = $('div[style*="width: 422px; height: 606px; position: relative; overflow-y: auto; margin-top: 8px;"] > table > tbody > tr:nth-child(3) > td > table > tbody > tr:nth-child(9) > td:nth-child(2) > img:nth-child(4)').attr('src') || '';
+        consolationPrize[4] = $('div[style*="width: 422px; height: 606px; position: relative; overflow-y: auto; margin-top: 8px;"] > table > tbody > tr:nth-child(3) > td > table > tbody > tr:nth-child(9) > td:nth-child(2) > img:nth-child(5)').attr('src') || '';
+        consolationPrize[5] = $('div[style*="width: 422px; height: 606px; position: relative; overflow-y: auto; margin-top: 8px;"] > table > tbody > tr:nth-child(3) > td > table > tbody > tr:nth-child(9) > td:nth-child(2) > img:nth-child(6)').attr('src') || '';
+        consolationPrize = consolationPrize.map( el => {
+            if(el){
+                return el.replace("sydney/images/bola2/kuning_", "").replace(".jpg","")
+             } else {
+                 return '';
+             }
+        })
 
 
         result = {
