@@ -112,4 +112,82 @@ async function getHongkong(){
     
 }
 
-module.exports = {getHongkong}
+
+
+
+async function getSydney(){
+    let mainUrl = 'https://sydneypoolstoday.com/live'
+    const mainHtml = await axios.get(mainUrl);
+    let status = 'error';
+    let result = null;
+
+    if(mainHtml.status == 200){
+        const $ = await cheerio.load(mainHtml.data);
+        status = mainHtml.status;
+
+        let currentDraw = $('div[style*="width: 422px; height: 606px; position: relative; overflow-y: auto; margin-top: 8px;"] > table > tbody > tr:nth-child(2) > td > b > font').text().trim();
+        let firstPrize = []
+        firstPrize[0] = $('div[style*="width: 422px; height: 606px; position: relative; overflow-y: auto; margin-top: 8px;"] > table > tbody > tr:nth-child(3) > td > table > tbody > tr:nth-child(1) > td:nth-child(2) > img:nth-child(1)').attr('src').replace("sydney/images/bola2/biru_", "").replace(".jpg","")
+        firstPrize[1] = $('div[style*="width: 422px; height: 606px; position: relative; overflow-y: auto; margin-top: 8px;"] > table > tbody > tr:nth-child(3) > td > table > tbody > tr:nth-child(1) > td:nth-child(2) > img:nth-child(2)').attr('src').replace("sydney/images/bola2/biru_", "").replace(".jpg","")
+        firstPrize[2] = $('div[style*="width: 422px; height: 606px; position: relative; overflow-y: auto; margin-top: 8px;"] > table > tbody > tr:nth-child(3) > td > table > tbody > tr:nth-child(1) > td:nth-child(2) > img:nth-child(3)').attr('src').replace("sydney/images/bola2/biru_", "").replace(".jpg","")
+        firstPrize[3] = $('div[style*="width: 422px; height: 606px; position: relative; overflow-y: auto; margin-top: 8px;"] > table > tbody > tr:nth-child(3) > td > table > tbody > tr:nth-child(1) > td:nth-child(2) > img:nth-child(4)').attr('src').replace("sydney/images/bola2/biru_", "").replace(".jpg","")
+        firstPrize[4] = $('div[style*="width: 422px; height: 606px; position: relative; overflow-y: auto; margin-top: 8px;"] > table > tbody > tr:nth-child(3) > td > table > tbody > tr:nth-child(1) > td:nth-child(2) > img:nth-child(5)').attr('src').replace("sydney/images/bola2/biru_", "").replace(".jpg","")
+        firstPrize[5] = $('div[style*="width: 422px; height: 606px; position: relative; overflow-y: auto; margin-top: 8px;"] > table > tbody > tr:nth-child(3) > td > table > tbody > tr:nth-child(1) > td:nth-child(2) > img:nth-child(6)').attr('src').replace("sydney/images/bola2/biru_", "").replace(".jpg","")
+        // console.log("firstPrize ", firstPrize.join(''))
+
+        let secondPrize = []
+        secondPrize[0] = $('div[style*="width: 422px; height: 606px; position: relative; overflow-y: auto; margin-top: 8px;"] > table > tbody > tr:nth-child(3) > td > table > tbody > tr:nth-child(3) > td:nth-child(2) > img:nth-child(1)').attr('src').replace("sydney/images/bola2/hijau_", "").replace(".jpg","")
+        secondPrize[1] = $('div[style*="width: 422px; height: 606px; position: relative; overflow-y: auto; margin-top: 8px;"] > table > tbody > tr:nth-child(3) > td > table > tbody > tr:nth-child(3) > td:nth-child(2) > img:nth-child(2)').attr('src').replace("sydney/images/bola2/hijau_", "").replace(".jpg","")
+        secondPrize[2] = $('div[style*="width: 422px; height: 606px; position: relative; overflow-y: auto; margin-top: 8px;"] > table > tbody > tr:nth-child(3) > td > table > tbody > tr:nth-child(3) > td:nth-child(2) > img:nth-child(3)').attr('src').replace("sydney/images/bola2/hijau_", "").replace(".jpg","")
+        secondPrize[3] = $('div[style*="width: 422px; height: 606px; position: relative; overflow-y: auto; margin-top: 8px;"] > table > tbody > tr:nth-child(3) > td > table > tbody > tr:nth-child(3) > td:nth-child(2) > img:nth-child(4)').attr('src').replace("sydney/images/bola2/hijau_", "").replace(".jpg","")
+        secondPrize[4] = $('div[style*="width: 422px; height: 606px; position: relative; overflow-y: auto; margin-top: 8px;"] > table > tbody > tr:nth-child(3) > td > table > tbody > tr:nth-child(3) > td:nth-child(2) > img:nth-child(5)').attr('src').replace("sydney/images/bola2/hijau_", "").replace(".jpg","")
+        secondPrize[5] = $('div[style*="width: 422px; height: 606px; position: relative; overflow-y: auto; margin-top: 8px;"] > table > tbody > tr:nth-child(3) > td > table > tbody > tr:nth-child(3) > td:nth-child(2) > img:nth-child(6)').attr('src').replace("sydney/images/bola2/hijau_", "").replace(".jpg","")
+        // console.log("secondPrize ", secondPrize.join(''))
+
+
+        let thirdPrize = []
+        thirdPrize[0] = $('div[style*="width: 422px; height: 606px; position: relative; overflow-y: auto; margin-top: 8px;"] > table > tbody > tr:nth-child(3) > td > table > tbody > tr:nth-child(5) > td:nth-child(2) > img:nth-child(1)').attr('src').replace("sydney/images/bola2/pink_", "").replace(".jpg","")
+        thirdPrize[1] = $('div[style*="width: 422px; height: 606px; position: relative; overflow-y: auto; margin-top: 8px;"] > table > tbody > tr:nth-child(3) > td > table > tbody > tr:nth-child(5) > td:nth-child(2) > img:nth-child(2)').attr('src').replace("sydney/images/bola2/pink_", "").replace(".jpg","")
+        thirdPrize[2] = $('div[style*="width: 422px; height: 606px; position: relative; overflow-y: auto; margin-top: 8px;"] > table > tbody > tr:nth-child(3) > td > table > tbody > tr:nth-child(5) > td:nth-child(2) > img:nth-child(3)').attr('src').replace("sydney/images/bola2/pink_", "").replace(".jpg","")
+        thirdPrize[3] = $('div[style*="width: 422px; height: 606px; position: relative; overflow-y: auto; margin-top: 8px;"] > table > tbody > tr:nth-child(3) > td > table > tbody > tr:nth-child(5) > td:nth-child(2) > img:nth-child(4)').attr('src').replace("sydney/images/bola2/pink_", "").replace(".jpg","")
+        thirdPrize[4] = $('div[style*="width: 422px; height: 606px; position: relative; overflow-y: auto; margin-top: 8px;"] > table > tbody > tr:nth-child(3) > td > table > tbody > tr:nth-child(5) > td:nth-child(2) > img:nth-child(5)').attr('src').replace("sydney/images/bola2/pink_", "").replace(".jpg","")
+        thirdPrize[5] = $('div[style*="width: 422px; height: 606px; position: relative; overflow-y: auto; margin-top: 8px;"] > table > tbody > tr:nth-child(3) > td > table > tbody > tr:nth-child(5) > td:nth-child(2) > img:nth-child(6)').attr('src').replace("sydney/images/bola2/pink_", "").replace(".jpg","")
+        // console.log("thirdPrize ", thirdPrize.join(''))
+
+        let starterPrize = []
+        starterPrize[0] = $('div[style*="width: 422px; height: 606px; position: relative; overflow-y: auto; margin-top: 8px;"] > table > tbody > tr:nth-child(3) > td > table > tbody > tr:nth-child(7) > td:nth-child(2) > img:nth-child(1)').attr('src').replace("sydney/images/bola2/orange_", "").replace(".jpg","")
+        starterPrize[1] = $('div[style*="width: 422px; height: 606px; position: relative; overflow-y: auto; margin-top: 8px;"] > table > tbody > tr:nth-child(3) > td > table > tbody > tr:nth-child(7) > td:nth-child(2) > img:nth-child(2)').attr('src').replace("sydney/images/bola2/orange_", "").replace(".jpg","")
+        starterPrize[2] = $('div[style*="width: 422px; height: 606px; position: relative; overflow-y: auto; margin-top: 8px;"] > table > tbody > tr:nth-child(3) > td > table > tbody > tr:nth-child(7) > td:nth-child(2) > img:nth-child(3)').attr('src').replace("sydney/images/bola2/orange_", "").replace(".jpg","")
+        starterPrize[3] = $('div[style*="width: 422px; height: 606px; position: relative; overflow-y: auto; margin-top: 8px;"] > table > tbody > tr:nth-child(3) > td > table > tbody > tr:nth-child(7) > td:nth-child(2) > img:nth-child(4)').attr('src').replace("sydney/images/bola2/orange_", "").replace(".jpg","")
+        starterPrize[4] = $('div[style*="width: 422px; height: 606px; position: relative; overflow-y: auto; margin-top: 8px;"] > table > tbody > tr:nth-child(3) > td > table > tbody > tr:nth-child(7) > td:nth-child(2) > img:nth-child(5)').attr('src').replace("sydney/images/bola2/orange_", "").replace(".jpg","")
+        starterPrize[5] = $('div[style*="width: 422px; height: 606px; position: relative; overflow-y: auto; margin-top: 8px;"] > table > tbody > tr:nth-child(3) > td > table > tbody > tr:nth-child(7) > td:nth-child(2) > img:nth-child(6)').attr('src').replace("sydney/images/bola2/orange_", "").replace(".jpg","")
+        // console.log("starterPrize ", starterPrize.join(''))
+
+
+        let consolationPrize = []
+        consolationPrize[0] = $('div[style*="width: 422px; height: 606px; position: relative; overflow-y: auto; margin-top: 8px;"] > table > tbody > tr:nth-child(3) > td > table > tbody > tr:nth-child(9) > td:nth-child(2) > img:nth-child(1)').attr('src').replace("sydney/images/bola2/kuning_", "").replace(".jpg","")
+        consolationPrize[1] = $('div[style*="width: 422px; height: 606px; position: relative; overflow-y: auto; margin-top: 8px;"] > table > tbody > tr:nth-child(3) > td > table > tbody > tr:nth-child(9) > td:nth-child(2) > img:nth-child(2)').attr('src').replace("sydney/images/bola2/kuning_", "").replace(".jpg","")
+        consolationPrize[2] = $('div[style*="width: 422px; height: 606px; position: relative; overflow-y: auto; margin-top: 8px;"] > table > tbody > tr:nth-child(3) > td > table > tbody > tr:nth-child(9) > td:nth-child(2) > img:nth-child(3)').attr('src').replace("sydney/images/bola2/kuning_", "").replace(".jpg","")
+        consolationPrize[3] = $('div[style*="width: 422px; height: 606px; position: relative; overflow-y: auto; margin-top: 8px;"] > table > tbody > tr:nth-child(3) > td > table > tbody > tr:nth-child(9) > td:nth-child(2) > img:nth-child(4)').attr('src').replace("sydney/images/bola2/kuning_", "").replace(".jpg","")
+        consolationPrize[4] = $('div[style*="width: 422px; height: 606px; position: relative; overflow-y: auto; margin-top: 8px;"] > table > tbody > tr:nth-child(3) > td > table > tbody > tr:nth-child(9) > td:nth-child(2) > img:nth-child(5)').attr('src').replace("sydney/images/bola2/kuning_", "").replace(".jpg","")
+        consolationPrize[5] = $('div[style*="width: 422px; height: 606px; position: relative; overflow-y: auto; margin-top: 8px;"] > table > tbody > tr:nth-child(3) > td > table > tbody > tr:nth-child(9) > td:nth-child(2) > img:nth-child(6)').attr('src').replace("sydney/images/bola2/kuning_", "").replace(".jpg","")
+        // console.log("consolationPrize ", consolationPrize.join(''))
+
+
+        result = {
+            currentDraw,
+            firstPrize : firstPrize.join(''),
+            secondPrize : secondPrize.join(''),
+            thirdPrize : thirdPrize.join(''),
+            starterPrize : starterPrize.join(''),
+            consolationPrize : consolationPrize.join(''),
+        }
+
+    }
+    // console.log(result)
+    return status == 'error' ? status : result;
+
+}
+
+
+module.exports = {getHongkong, getSydney}
