@@ -10,11 +10,18 @@ app.get('/hongkong', (req, res) => {
   res.send(hasil)
 })
 
+app.get('/sydney', (req, res) => {
+  let hasil = getData.getSydney()
+  res.send(hasil)
+})
+
 app.listen(port, () => {
   console.log(`app listening at http://localhost:${port}`)
 })
 
 
+// looping
 setInterval(()=>{
   getData.HongkongUpdate();
+  getData.SydneyUpdate();
 }, 5000)
