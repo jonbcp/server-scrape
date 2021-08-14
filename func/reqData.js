@@ -223,5 +223,82 @@ async function getSydney(){
 
 }
 
+async function getSGP(){
+    let mainUrl = 'https://www.4dresult.co/singapore-4d-results/'
+    const mainHtml = await axios.get(mainUrl);
+    let status = 'error';
+    let result = null;
 
-module.exports = {getHongkong, getSydney}
+    if(mainHtml.status == 200){
+        const $ = await cheerio.load(mainHtml.data);
+        status = mainHtml.status;
+
+
+        let currentDraw = $('#row > div > div:nth-child(1) > div.card.outer-box > div > div.row.mx-0.justify-content-between > div:nth-child(1)').text().split(' ');
+        currentDraw = currentDraw[1].split('-');
+
+        let months_arr = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+        currentDraw = currentDraw[0] + ' ' + months_arr[Number(currentDraw[1]) - 1]  + ' ' +  currentDraw[2]
+
+        let firstPrize = $('#row > div > div:nth-child(1) > div.card.outer-box > div > table:nth-child(3) > tbody > tr:nth-child(1) > td.lottery-prize-number.border.text-center').text();
+        let secondPrize = $('#row > div > div:nth-child(1) > div.card.outer-box > div > table:nth-child(3) > tbody > tr:nth-child(2) > td.lottery-prize-number.border.text-center').text();
+        let thirdPrize = $('#row > div > div:nth-child(1) > div.card.outer-box > div > table:nth-child(3) > tbody > tr:nth-child(3) > td.lottery-prize-number.border.text-center').text();
+        
+        let starterPrize = []
+        starterPrize[0] = $('#row > div > div:nth-child(1) > div.card.outer-box > div > table:nth-child(4) > tbody > tr:nth-child(2) > td:nth-child(1)').text().trim() || '';
+        starterPrize[1] = $('#row > div > div:nth-child(1) > div.card.outer-box > div > table:nth-child(4) > tbody > tr:nth-child(2) > td:nth-child(2)').text().trim() || '';
+        starterPrize[2] = $('#row > div > div:nth-child(1) > div.card.outer-box > div > table:nth-child(4) > tbody > tr:nth-child(2) > td:nth-child(3)').text().trim() || '';
+        starterPrize[3] = $('#row > div > div:nth-child(1) > div.card.outer-box > div > table:nth-child(4) > tbody > tr:nth-child(2) > td:nth-child(4)').text().trim() || '';
+        starterPrize[4] = $('#row > div > div:nth-child(1) > div.card.outer-box > div > table:nth-child(4) > tbody > tr:nth-child(2) > td:nth-child(5)').text().trim() || '';
+        starterPrize[5] = $('#row > div > div:nth-child(1) > div.card.outer-box > div > table:nth-child(4) > tbody > tr:nth-child(3) > td:nth-child(1)').text().trim() || '';
+        starterPrize[6] = $('#row > div > div:nth-child(1) > div.card.outer-box > div > table:nth-child(4) > tbody > tr:nth-child(3) > td:nth-child(2)').text().trim() || '';
+        starterPrize[7] = $('#row > div > div:nth-child(1) > div.card.outer-box > div > table:nth-child(4) > tbody > tr:nth-child(3) > td:nth-child(3)').text().trim() || '';
+        starterPrize[8] = $('#row > div > div:nth-child(1) > div.card.outer-box > div > table:nth-child(4) > tbody > tr:nth-child(3) > td:nth-child(4)').text().trim() || '';
+        starterPrize[9] = $('#row > div > div:nth-child(1) > div.card.outer-box > div > table:nth-child(4) > tbody > tr:nth-child(3) > td:nth-child(5)').text().trim() || '';
+
+        let consolationPrize = []
+        consolationPrize[0] = $('#row > div > div:nth-child(1) > div.card.outer-box > div > table:nth-child(5) > tbody > tr:nth-child(2) > td:nth-child(1)').text().trim() || '';
+        consolationPrize[1] = $('#row > div > div:nth-child(1) > div.card.outer-box > div > table:nth-child(5) > tbody > tr:nth-child(2) > td:nth-child(2)').text().trim() || '';
+        consolationPrize[2] = $('#row > div > div:nth-child(1) > div.card.outer-box > div > table:nth-child(5) > tbody > tr:nth-child(2) > td:nth-child(3)').text().trim() || '';
+        consolationPrize[3] = $('#row > div > div:nth-child(1) > div.card.outer-box > div > table:nth-child(5) > tbody > tr:nth-child(2) > td:nth-child(4)').text().trim() || '';
+        consolationPrize[4] = $('#row > div > div:nth-child(1) > div.card.outer-box > div > table:nth-child(5) > tbody > tr:nth-child(2) > td:nth-child(5)').text().trim() || '';
+        consolationPrize[5] = $('#row > div > div:nth-child(1) > div.card.outer-box > div > table:nth-child(5) > tbody > tr:nth-child(3) > td:nth-child(1)').text().trim() || '';
+        consolationPrize[6] = $('#row > div > div:nth-child(1) > div.card.outer-box > div > table:nth-child(5) > tbody > tr:nth-child(3) > td:nth-child(2)').text().trim() || '';
+        consolationPrize[7] = $('#row > div > div:nth-child(1) > div.card.outer-box > div > table:nth-child(5) > tbody > tr:nth-child(3) > td:nth-child(3)').text().trim() || '';
+        consolationPrize[8] = $('#row > div > div:nth-child(1) > div.card.outer-box > div > table:nth-child(5) > tbody > tr:nth-child(3) > td:nth-child(4)').text().trim() || '';
+        consolationPrize[9] = $('#row > div > div:nth-child(1) > div.card.outer-box > div > table:nth-child(5) > tbody > tr:nth-child(3) > td:nth-child(5)').text().trim() || '';
+
+        let totoCurrentDraw = $('#row > div > div:nth-child(2) > div.card.outer-box > div > div.row.mx-0.justify-content-between > div:nth-child(1)').text().split(' ')
+        totoCurrentDraw = totoCurrentDraw[1].split('-');
+        totoCurrentDraw = totoCurrentDraw[0] + ' ' + months_arr[Number(totoCurrentDraw[1]) - 1]  + ' ' +  totoCurrentDraw[2]
+
+        let totoResult = []
+        totoResult[0] = $("#row > div > div:nth-child(2) > div.card.outer-box > div > table > tbody > tr:nth-child(2) > td:nth-child(1)").text().trim() || '';
+        totoResult[1] = $("#row > div > div:nth-child(2) > div.card.outer-box > div > table > tbody > tr:nth-child(2) > td:nth-child(2)").text().trim() || '';
+        totoResult[2] = $("#row > div > div:nth-child(2) > div.card.outer-box > div > table > tbody > tr:nth-child(2) > td:nth-child(3)").text().trim() || '';
+        totoResult[3] = $("#row > div > div:nth-child(2) > div.card.outer-box > div > table > tbody > tr:nth-child(2) > td:nth-child(4)").text().trim() || '';
+        totoResult[4] = $("#row > div > div:nth-child(2) > div.card.outer-box > div > table > tbody > tr:nth-child(2) > td:nth-child(5)").text().trim() || '';
+        totoResult[5] = $("#row > div > div:nth-child(2) > div.card.outer-box > div > table > tbody > tr:nth-child(2) > td:nth-child(6)").text().trim() || '';
+        let totoAdditional = $("#row > div > div:nth-child(2) > div.card.outer-box > div > table > tbody > tr:nth-child(2) > td:nth-child(8)").text().trim() || '';
+        
+        result = {
+            currentDraw : currentDraw,
+            firstPrize : firstPrize,
+            secondPrize : secondPrize,
+            thirdPrize : thirdPrize,
+            starterPrize : starterPrize,
+            consolationPrize : consolationPrize,
+            totoCurrentDraw : totoCurrentDraw,
+            totoResult : totoResult,
+            totoAdditional : totoAdditional,
+        }
+    }
+
+
+    // console.log(result)
+    return status == 'error' ? status : result;
+
+}
+
+
+module.exports = {getHongkong, getSydney, getSGP}

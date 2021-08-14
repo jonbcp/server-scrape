@@ -24,4 +24,5 @@ app.listen(port, () => {
 setInterval(()=>{
   getData.HongkongUpdate();
   getData.SydneyUpdate();
-}, 5000)
+  getData.SGPUpdate();
+}, 7000)

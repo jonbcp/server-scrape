@@ -94,6 +94,15 @@ async function aHongkongUpdate(){
     }
 }
 
+async function SGPUpdate(){
+    let file = read("sgp")
+    console.log("updating SGP ...")
+
+    let getNewFile = await reqData.getSGP();
+    file = getNewFile;
+    write('sgp', file)
+}
+
 function getHongkong(){
     return read("hongkong")
 }
@@ -102,4 +111,8 @@ function getSydney(){
     return read("sydney")
 }
 
-module.exports = {getHongkong, HongkongUpdate, SydneyUpdate, getSydney}
+function getSGP(){
+    return read("sgp")
+}
+
+module.exports = {getHongkong, HongkongUpdate, SydneyUpdate, getSydney, SGPUpdate, getSGP}
