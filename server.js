@@ -15,6 +15,12 @@ app.get('/sydney', (req, res) => {
   res.send(hasil)
 })
 
+app.get('/sgp', (req, res) => {
+  let hasil = getData.getSGP()
+  res.send(hasil)
+})
+
+
 app.listen(port, () => {
   console.log(`app listening at http://localhost:${port}`)
 })
